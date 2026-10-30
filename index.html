@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academic Performance Tracker &mdash; Kolej MARA Banting</title>
+
+<!-- ============================================================
+     EDIT THIS ONE LINE: paste the Apps Script web app URL here.
+     It is the long one ending in /exec, from Deploy -> Manage deployments.
+     ============================================================ -->
+<script>var APP_URL = "https://script.google.com/a/macros/kmb-digital-unit.net/s/AKfycbxXV4kBA86gPcNsgc_1akT93ci0Sbk_UQ76KG2K09LqcBNEIBh64HRLD1PteZwQKr2Veg/exec";</script>
+
+<!-- Link preview card for WhatsApp, Telegram and the rest. og:image must be an
+     absolute URL, so the line below has to carry your real GitHub Pages address. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Academic Performance Tracker">
+<meta property="og:site_name" content="Kolej MARA Banting">
+<meta property="og:description" content="Intervention case tracking for the IB Diploma Programme. Log in with your staff number.">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/REPO-NAME/thumb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="icon" href="crest.png">
+
+<style>
+:root{
+  --navy:#1F3A5F; --navy-d:#15293F; --paper:#FAF6EC; --paper-d:#F0E9D8;
+  --amber:#D9A441; --slate:#5A6B7A; --rule:#C9C2B2;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--paper);font-family:var(--sans);color:var(--navy-d);
+     display:flex;flex-direction:column;align-items:center;justify-content:center;
+     padding:24px 16px;-webkit-font-smoothing:antialiased}
+.box{width:100%;max-width:440px;background:#fff;border:1px solid var(--rule);
+     box-shadow:0 2px 0 rgba(0,0,0,.06)}
+.head{background:var(--navy);color:#fff;padding:26px 24px 24px;text-align:center}
+.head img{height:88px;width:auto;margin-bottom:13px}
+.head h1{font-family:var(--serif);font-size:23px;line-height:1.15;font-weight:700}
+.head p{font-size:13px;color:#C6D6E6;margin-top:5px}
+.head .tagline{font-size:11.5px;letter-spacing:2.6px;color:var(--amber);margin-top:7px}
+.body{padding:22px 24px 24px;text-align:center}
+.body p{font-size:13.5px;line-height:1.55;color:var(--slate);margin-bottom:18px}
+.btn{display:block;width:100%;background:var(--navy);color:#fff;text-decoration:none;
+     font-size:15px;font-weight:700;padding:14px 18px;border:1px solid var(--navy-d);
+     text-align:center}
+.btn:hover{background:#2C4C76}
+.wait{margin-top:13px;font-size:11.8px;color:var(--slate)}
+.oops{margin-top:13px;font-size:12.5px;line-height:1.5;color:#8C2F20;
+      background:#F6D9D3;border-left:3px solid #C25844;padding:9px 12px;text-align:left}
+.oops[hidden]{display:none}
+footer{margin-top:22px;text-align:center;font-size:11.5px;line-height:1.55;color:var(--slate)}
+footer img{height:26px;display:block;margin:0 auto 5px}
+footer b{display:block;color:var(--navy);font-size:12.3px}
+@media (max-width:420px){
+  .head{padding:20px 18px 18px} .head img{height:70px} .head h1{font-size:20px}
+  .body{padding:18px 18px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <div class="head">
+    <img src="crest.png" alt="Kolej MARA Banting">
+    <h1>Academic Performance Tracker</h1>
+    <p>Kolej MARA Banting &middot; IB Diploma Programme</p>
+    <p class="tagline">BERDISIPLIN BERILMU BERAMAL</p>
+  </div>
+  <div class="body">
+    <p>Taking you to the tracker. Log in with your staff number.</p>
+    <a class="btn" id="go" href="#">Open the tracker</a>
+    <p class="wait" id="wait">Redirecting&hellip;</p>
+    <div class="oops" id="oops" hidden>
+      This link has not been pointed at the app yet. Whoever set the page up needs to paste
+      the Apps Script URL into <b>index.html</b>.
+    </div>
+  </div>
+</div>
+
+<footer>
+  <img src="crest.png" alt="">
+  Developed by
+  <b>KMB Digitalization in T&amp;L Unit</b>
+  for
+  <b>KMB Intervention Unit</b>
+</footer>
+
+<script>
+(function(){
+  var ready = APP_URL && APP_URL.indexOf('script.google.com') !== -1;
+  var go = document.getElementById('go');
+
+  if (!ready){
+    document.getElementById('oops').hidden = false;
+    document.getElementById('wait').hidden = true;
+    go.style.display = 'none';
+    return;
+  }
+
+  go.href = APP_URL;
+
+  /* The button is the real way in; the automatic hop is a convenience on top of it.
+     Link previews in WhatsApp and Telegram fetch this page with a bot that must not be
+     bounced, and some in-app browsers block an instant redirect outright — so the page
+     always renders something a person can tap, and waits a beat before moving. */
+  var bot = /bot|crawl|spider|preview|facebookexternalhit|whatsapp|telegram|slack|discord/i
+              .test(navigator.userAgent);
+  if (!bot) setTimeout(function(){ location.replace(APP_URL); }, 900);
+})();
+</script>
+</body>
+</html>
